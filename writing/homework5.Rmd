@@ -32,10 +32,20 @@ baltimore_graph <- baltimore |>
   separate(col = reported_date,
            into = c("year", "month", "day"),
            sep = "-") |> 
+  mutate(month = month(as.numeric(month), 
+                       label = TRUE, abbr = FALSE)) |> 
   select(year, month, victim_last, victim_first)
 
 monthly_homicides <- baltimore_graph |> 
   group_by(month, year) |>  
-  summarise(monthly_homicides = n())
+  summarise(monthly_homicides = n()) |> 
+  ungroup()
 ```
+
+```{r making the graph}
+monthly_homicides |> 
+  ggplot(aes(x = month, y = monthly_homicides)) +
+  geom_col()
+```
+
 
