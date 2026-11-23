@@ -44,7 +44,8 @@ monthly_homicides <- baltimore_graph |>
     month %in% c("November", "December", "January",
                  "February", "March", "April") ~ "Winter",
     month %in% c("May", "June", "July", "August", "September",
-                 "October") ~ "Summer"))
+                 "October") ~ "Summer")) |> 
+  mutate(year = as.Date(paste(year, month, "01"), format = "%Y %B %d"))
 ```
 
 ```{r graph, fig.width = 8, fig.height = 3}
@@ -52,10 +53,13 @@ monthly_homicides |>
   ggplot(aes(x = year, y = monthly_homicides, fill = season, 
              group = month)) +
   geom_col(position = "dodge") +
+  scale_fill_manual(values = c("Winter" = "lightblue",
+                               "Summer" = "lightgray"))+
   labs(x = "Date", y = "Monthly homicides")+
   ggtitle("Homicides in Baltimore, MD")+
-  theme_dark()
-
+  theme_dark()+
+  theme(legend.position = "bottom")
+  
 ```
 
 
