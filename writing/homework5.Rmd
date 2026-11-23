@@ -5,11 +5,11 @@ date: "Due 2026-11-30"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r global_options}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE)
 ```
 
-```{r}
-list.files(path = "../data")
+```{r import the data}
+
 ```
 
