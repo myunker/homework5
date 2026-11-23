@@ -37,15 +37,25 @@ baltimore_graph <- baltimore |>
   select(year, month, victim_last, victim_first)
 
 monthly_homicides <- baltimore_graph |> 
-  group_by(month, year) |>  
-  summarise(monthly_homicides = n()) |> 
-  ungroup()
+  group_by(year, month) |>  
+  summarise(monthly_homicides = n(),
+            .groups = "drop_last") |> 
+  mutate(season = case_when(
+    month %in% c("November", "December", "January",
+                 "February", "March", "April") ~ "Winter",
+    month %in% c("May", "June", "July", "August", "September",
+                 "October") ~ "Summer"))
 ```
 
-```{r making the graph}
+```{r graph, fig.width = 8, fig.height = 3}
 monthly_homicides |> 
-  ggplot(aes(x = month, y = monthly_homicides)) +
-  geom_col()
+  ggplot(aes(x = year, y = monthly_homicides, fill = season, 
+             group = month)) +
+  geom_col(position = "dodge") +
+  labs(x = "Date", y = "Monthly homicides")+
+  ggtitle("Homicides in Baltimore, MD")+
+  theme_dark()
+
 ```
 
 
