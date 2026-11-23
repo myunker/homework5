@@ -12,7 +12,8 @@ knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE)
 ```{r oackages used}
 library(readr)
 library(tidyverse)
-
+library(ggplot2)
+library(ggthemes)
 ```
 
 
@@ -25,4 +26,12 @@ baltimore <- homicides |>
 
 Homework Choice: Choice 2 
 
+```{r making graph data set}
+baltimore_graph <- baltimore |> 
+  mutate(reported_date = ymd(reported_date)) |> 
+  separate(col = reported_date,
+           into = c("year", "month", "day"),
+           sep = "-") |> 
+  select(year, month, victim_last, victim_first)
+```
 
