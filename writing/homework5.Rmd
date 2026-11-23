@@ -9,7 +9,20 @@ output: html_document
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = TRUE)
 ```
 
-```{r import the data}
+```{r oackages used}
+library(readr)
+library(tidyverse)
 
 ```
+
+
+```{r import the data and clean}
+homicides <- read.csv("../data/homicide-data.csv")
+
+baltimore <- homicides |> 
+  filter(city == "Baltimore")
+```
+
+Homework Choice: Choice 2 
+
 
