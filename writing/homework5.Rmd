@@ -33,5 +33,9 @@ baltimore_graph <- baltimore |>
            into = c("year", "month", "day"),
            sep = "-") |> 
   select(year, month, victim_last, victim_first)
+
+monthly_homicides <- baltimore_graph |> 
+  group_by(month, year) |>  
+  summarise(monthly_homicides = n())
 ```
 
