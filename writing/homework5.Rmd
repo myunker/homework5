@@ -14,6 +14,7 @@ library(readr)
 library(tidyverse)
 library(ggplot2)
 library(ggthemes)
+library(gghighlight)
 ```
 
 
@@ -58,7 +59,8 @@ monthly_homicides |>
   labs(x = "Date", y = "Monthly homicides")+
   ggtitle("Homicides in Baltimore, MD")+
   theme_dark()+
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom")+
+  geom_vline(xintercept = as.Date("2015-04-01"))
   
 ```
 
