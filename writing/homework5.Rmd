@@ -69,7 +69,9 @@ monthly_homicides |>
          y = 40,
          label = "Arrest of \nFreddie Gray",
          color = "lightgray",
-         hjust = 1)
+         hjust = 1)+
+  geom_smooth(aes(group = 1), 
+              method = "auto", span = 0.15, se = FALSE, color = "blue")
 ```
 
 
