@@ -71,7 +71,8 @@ monthly_homicides |>
          color = "lightgray",
          hjust = 1)+
   geom_smooth(aes(group = 1), 
-              method = "auto", span = 0.15, se = FALSE, color = "blue")
+              method = "auto", span = 0.15, se = FALSE, color = "blue",
+              show.legend = FALSE)
 ```
 
 
