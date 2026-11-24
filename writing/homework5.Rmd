@@ -15,6 +15,7 @@ library(tidyverse)
 library(ggplot2)
 library(ggthemes)
 library(gghighlight)
+library(ggrepel)
 ```
 
 
@@ -63,8 +64,11 @@ monthly_homicides |>
   geom_vline(xintercept = as.Date("2015-04-01"),
              color = "red",
              linetype = "dashed",
-             linewidth = 1)
-  
+             linewidth = 1)+
+  annotate("text",
+         x = as.Date("2015-04-01"),
+         y = 20,
+         label = "Arrest of \nFreddie Gray")
 ```
 
 
