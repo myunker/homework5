@@ -59,7 +59,7 @@ monthly_homicides |>
   labs(x = "Date", y = "Monthly homicides")+
   ggtitle("Homicides in Baltimore, MD")+
   theme_dark()+
-  theme(legend.position = "bottom")+
+  theme(legend.position = "bottom", legend.title = element_blank())+
   geom_vline(xintercept = as.Date("2015-04-01"),
              color = "red",
              linetype = "dashed",
